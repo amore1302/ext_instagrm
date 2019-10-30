@@ -19,7 +19,7 @@
 
 `main.py`            - содержит основной модуль программы
 
-`fetch_hubble.py - содержит get обращения 
+`fetch_hubble.py` - содержит get обращения 
 к ресурсу http://hubblesite.org/api/v3   Телескоп Hubble 
 
 `fetch_spacex.py` содержит get обращения запуска SpaceX
