@@ -1,5 +1,6 @@
 import requests
 from load_image   import load_image_from_url_to_file
+import os
 
 
 def get_extension_file(file_name):
@@ -17,7 +18,8 @@ def get_last_image_from_Hubble(id_image):
     last_image = images[-1]
     url_image = last_image["file_url"]
     type_file = get_extension_file(url_image)
-    url_file = "{0}{1}.{2}".format("images/", id_image, type_file)
+    dir_name = os.path.join("images", "")
+    url_file = "{0}{1}.{2}".format(dir_name , id_image, type_file)
 
     first_symbols = url_image[0:4]
     if first_symbols != "http":
@@ -32,6 +34,5 @@ def get_colection_from_Hubble(name_colection):
     images = response.json()
     for curent_image in images:
         curent_id = curent_image["id"]
-        print(curent_id)
         get_last_image_from_Hubble(curent_id)
 

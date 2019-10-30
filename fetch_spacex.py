@@ -1,8 +1,9 @@
 import requests
 from load_image   import load_image_from_url_to_file
+import os
 
 def fetch_spacex_last_launch():
-    directory = "images/"
+    directory = os.path.join("images", "")
     payload = {
         "latest": "",
         "launch_date_utc": "2019-08-06T22:52:00.000Z"
