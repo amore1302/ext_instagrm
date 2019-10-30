@@ -2,10 +2,10 @@ import requests
 from load_image   import load_image_from_url_to_file
 
 
-def get_type_file(name_file):
-    list_world = name_file.split(".")
-    type_file = list_world[-1]
-    return type_file
+def get_extension_file(file_name):
+    list_world = file_name.split(".")
+    extension_file = list_world[-1]
+    return extension_file
 
 
 def get_last_image_from_Hubble(id_image):
@@ -16,7 +16,7 @@ def get_last_image_from_Hubble(id_image):
     images = response.json()["image_files"]
     last_image = images[-1]
     url_image = last_image["file_url"]
-    type_file = get_type_file(url_image)
+    type_file = get_extension_file(url_image)
     url_file = "{0}{1}.{2}".format("images/", id_image, type_file)
 
     first_symbols = url_image[0:4]
