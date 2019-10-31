@@ -3,23 +3,20 @@ from load_image   import load_image_from_url_to_file
 import os
 
 
-def get_extension_file(file_name):
-    list_world = file_name.split(".")
-    extension_file = list_world[-1]
-    return extension_file
 
 
 def get_last_image_from_Hubble(id_image):
     url_image = "http://hubblesite.org/api/v3/image/{0}".format(id_image)
     response = requests.get(url_image)
     if not response.ok:
-        raise requests.exceptions.HTTPError(response=reponse)
+        raise requests.exceptions.HTTPError(response=response)
     images = response.json()["image_files"]
     last_image = images[-1]
     url_image = last_image["file_url"]
-    type_file = get_extension_file(url_image)
+
+    _, file_extension = os.path.splitext(url_image)
     dir_name = os.path.join("images", "")
-    url_file = "{0}{1}.{2}".format(dir_name , id_image, type_file)
+    url_file = "{0}{1}{2}".format(dir_name , id_image,    file_extension )
 
     first_symbols = url_image[0:4]
     if first_symbols != "http":
